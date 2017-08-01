@@ -8,8 +8,7 @@ var bodyParser = require('body-parser');
 var mongoskin = require('mongoskin');
 var db = mongoskin.db('mongodb://localhost:27017/sprintabledb', {safe:true});
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+var services = require('./routes/services');
 
 var app = express();
 
@@ -31,8 +30,7 @@ app.use(function(req, res, next) {
     next();
 })
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/api/services', services);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
