@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoskin = require('mongoskin');
+var db = mongoskin.db('mongodb://localhost:27017/sprintabledb', {safe:true});
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -21,6 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+    req.db = {};
+    req.db.services = db.collection('services');
+    next();
+})
 
 app.use('/', index);
 app.use('/users', users);
