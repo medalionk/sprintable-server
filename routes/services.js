@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var service = require("../models/service");
+
 /* GET All Services. */
 router.get('/', function(req, res, next) {
     req.db.services.find().toArray(function(error, result){
@@ -11,11 +13,15 @@ router.get('/', function(req, res, next) {
 
 /* GET Service. */
 router.get('/:id', function(req, res, next) {
-    console.log('Service id: ', req.params.id);
+    console.log('Get Service id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid params provided.'));
+
     req.db.services.findById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Service is not found.'));
-        res.send(result || []);
+        res.send(result);
     });
 });
 
@@ -23,40 +29,44 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
     console.log(req.body);
 
-    if (!req.body || !req.body.name || !req.body.note || !req.body.cost || !req.body.duration)
-        return next(new Error('Invalid data provided.'));
-
-    req.db.services.insert({
-        name: req.body.name,
-        note: req.body.note,
-        cost: req.body.cost,
-        duration: req.body.duration
-    }, function(error, service){
+    var values = service.create(req, next);
+    req.db.services.insert(values, function(error, result){
         if (error) return next(error);
-        if (!service) return next(new Error('Failed to save.'));
-        console.info('Added Service');
+        if (!result) return next(new Error('Failed to insert.'));
+        console.info('Added Service: ', result);
         res.send(200);
     });
 });
 
 /* PUT Update Service. */
 router.put('/:id', function(req, res, next) {
-    console.log('Service id: ', req.params.id);
-    req.db.services.findOne({_id: req.createHexID(req.params.id)}, function(error, result) {
+    console.log('Update Service id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid params provided.'));
+
+    var values = service.create(req, next);
+    req.db.services.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
-        res.send(result || []);
+        if (!result) return next(new Error('Failed to update.'));
+        console.log('Service updated: ', result);
+        res.send(200);
     });
-    res.send('Update Service');
 });
 
 /* DELETE Service. */
 router.delete('/:id', function(req, res, next) {
-    console.log('Service id: ', req.params.id);
-    req.db.services.findOne({_id: req.createHexID(req.params.id)}, function(error, result) {
+    console.log('Delete Service id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid params provided.'));
+
+    req.db.services.removeById(req.params.id, function(error, result) {
         if (error) return next(error);
-        res.send(result || []);
+        if (!result) return next(new Error('Failed to delete.'));
+        console.log('Service deleted: ', result);
+        res.send(200);
     });
-    res.send('DELETE Service');
 });
 
 module.exports = router;
