@@ -1,0 +1,567 @@
+FORMAT: 1A
+HOST: http://private-b3d77-sprintable.apiary-mock.com/
+
+# Sprintable
+
+Sprintable app
+
+## Jobs Collection [/jobs]
+
+### List All Jobs [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "title": "Print T-Shirt",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$200",
+                "quantity": "20 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "OPEN",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "Eva Koma",
+                        "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+                    }
+            },
+            {
+                "id": "2",
+                "title": "Print Red Shirts",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$500",
+                "quantity": "220 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "OPEN",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "John Bull",
+                        "thumbnail": "https://randomuser.me/api/portraits/men/3.jpg"
+                    }
+            },
+            {
+                "id": "3",
+                "title": "Print Caps",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$2200",
+                "quantity": "420 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "OPEN",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "May Jane",
+                        "thumbnail": "https://randomuser.me/api/portraits/women/5.jpg"
+                    }
+            }
+        ]
+
+### Get Job [GET  /jobs/{id}]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Response 200 (application/json)
+
+        {
+            "id": "1",
+            "title": "Print on T-Shirt",
+            "description": "Lorem ipsum dolor sit amet",
+            "created_date": "08/02/2017",
+            "delivery_date": "30/02/2017",
+            "price": "$200",
+            "quantity": "20",
+            "delivery_address": "Lorem ipsum dolor sit amet",
+            "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+            "status": "OPEN",
+            "customer_id": "5980cbda26ad436ac84032a0",
+            "customer": {
+                    "id": "1234",
+                    "name": "Eva Koma",
+                    "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+                }
+        }
+        
+### Create Job [POST]
+
++ Request (application/json)
+
+        {
+            "title": "Print on T-Shirt",
+            "description": "Lorem ipsum dolor sit amet",
+            "delivery_date": "30/02/2017",
+            "price": "$200",
+            "quantity": "20",
+            "delivery_address": "Lorem ipsum dolor sit amet",
+            "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+            "customer_id": "5980cbda26ad436ac84032a0",
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /jobs/1
+
+### Update Job [PUT /jobs/{id}]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Request (application/json)
+
+        {
+            "title": "Print on T-Shirt",
+            "description": "Lorem ipsum dolor sit amet",
+            "delivery_date": "30/02/2017",
+            "price": "$200",
+            "quantity": "20",
+            "delivery_address": "Lorem ipsum dolor sit amet",
+            "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+            "customer_id": "5980cbda26ad436ac84032a0",
+        }
+
++ Response 204 (application/json)
+
+### Delete Job [DELETE  /jobs/{id}]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Response 204 (application/json)
+
+### Accept Job [PATCH  /jobs/{id}/accept]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Request (application/json)
+
+        {
+            "printshop_id": "1234"
+        }
+        
++ Response 204 (application/json)
+
+### Reject Job [PATCH  /jobs/{id}/reject]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Response 204 (application/json)
+
+### Close Job [PATCH  /jobs/{id}/close]
+
++ Parameters
+    + id (string) - ID of Job
+    
++ Response 204 (application/json)
+
+### List All WIP [GET /wips]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "title": "Print T-Shirt",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$200",
+                "quantity": "20 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "PROCESSING",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "Eva Koma",
+                        "thumbnail": "https://randomuser.me/api/portraits/women/10.jpg"
+                    }
+            },
+            {
+                "id": "2",
+                "title": "Print Red Shirts",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$500",
+                "quantity": "220 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "PROCESSING",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "John Bull",
+                        "thumbnail": "https://randomuser.me/api/portraits/men/30.jpg"
+                    }
+            },
+            {
+                "id": "3",
+                "title": "Print Caps",
+                "description": "Lorem ipsum dolor sit amet",
+                "created_date": "08/02/2017",
+                "delivery_date": "30/02/2017",
+                "price": "$2200",
+                "quantity": "420 shirts",
+                "delivery_address": "Lorem ipsum dolor sit amet",
+                "image": "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg",
+                "status": "PROCESSING",
+                "customer_id": "5980cbda26ad436ac84032a0",
+                "customer": {
+                        "id": "1234",
+                        "name": "May Jane",
+                        "thumbnail": "https://randomuser.me/api/portraits/women/15.jpg"
+                    }
+            }
+        ]
+ 
+   
+## Customers Collection [/customers]
+
+### List All Customers [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "name": "Eva Koma",
+                "note": "Lorem ipsum dolor sit amet",
+                "contact": "Lorem ipsum dolor sit amet",
+                "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg",
+                "rating": "5",
+                "reg_date":"30/02/2017",
+                "jobs":[
+                        {
+                            "id": "1234",
+                            "comment": "Lorem ipsum dolor sit amet",
+                            "rating": "4.5"
+                        }, {
+                            "id": "1235",
+                            "comment": "Lorem ipsum dolor sit amet",
+                            "rating": "3.5"
+                        }
+                    ]
+            }
+        ]
+
+### Get Customer [GET  /customers/{id}]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Response 200 (application/json)
+
+        {
+            "id": "1",
+            "name": "Eva Koma",
+            "note": "Lorem ipsum dolor sit amet",
+            "contact": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg",
+            "rating": "5",
+            "reg_date":"30/02/2017",
+            "jobs":[
+                    {
+                        "id": "1234",
+                        "comment": "Lorem ipsum dolor sit amet",
+                        "rating": "4.5"
+                    }, {
+                        "id": "1235",
+                        "comment": "Lorem ipsum dolor sit amet",
+                        "rating": "3.5"
+                    }
+                ]
+        }
+        
+### Create Customer [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Eva Koma",
+            "note": "Lorem ipsum dolor sit amet",
+            "contact": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /customers/1
+ 
+### Update Customer [PUT /customers/{id}]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Request (application/json)
+
+        {
+            "name": "Eva Koma",
+            "note": "Lorem ipsum dolor sit amet",
+            "contact": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+        }
+
++ Response 204 (application/json)
+
+### Delete Customer [DELETE  /customers/{id}]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Response 200 (application/json)
+
+### Rate Customer [PATCH  /customers/{id}/rate]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Request (application/json)
+
+        {
+            "comment": "Lorem ipsum dolor sit amet",
+            "rating": "4.5"
+        }
+        
++ Response 200 (application/json)
+
+
+## Printshops Collection [/printshops]
+
+### List All Printshops [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "name": "Shop 1",
+                "note": "Lorem ipsum dolor sit amet",
+                "address": "Lorem ipsum dolor sit amet",
+                "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg",
+                "rating": "5",
+                "reg_date":"30/02/2017",
+                "jobs":[
+                        {
+                            "id": "1234",
+                            "comment": "Lorem ipsum dolor sit amet",
+                            "rating": "4.5"
+                        }, {
+                            "id": "1235",
+                            "comment": "Lorem ipsum dolor sit amet",
+                            "rating": "3.5"
+                        }
+                    ],
+                "services":[
+                        {
+                            "id": "1",
+                            "name": "Print Large",
+                            "note": "Lorem ipsum dolor sit amet",
+                            "cost": "$60",
+                            "duration": "2 days"
+                        }, {
+                            "id": "2",
+                            "name": "Print Large",
+                            "note": "Lorem ipsum dolor sit amet",
+                            "cost": "$60",
+                            "duration": "2 days"
+                        }
+                    ]
+            }
+        ]
+
+### Get Printshop [GET  /printshops/{id}]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Response 200 (application/json)
+
+        {
+            "id": "1",
+            "name": "Shop 1",
+            "note": "Lorem ipsum dolor sit amet",
+            "address": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg",
+            "rating": "5",
+            "reg_date":"30/02/2017",
+            "jobs":[
+                    {
+                        "id": "1234",
+                        "comment": "Lorem ipsum dolor sit amet",
+                        "rating": "4.5"
+                    }, {
+                        "id": "1235",
+                        "comment": "Lorem ipsum dolor sit amet",
+                        "rating": "3.5"
+                    }
+                ],
+            "services":[
+                    {
+                        "id": "1",
+                        "name": "Print Large",
+                        "note": "Lorem ipsum dolor sit amet",
+                        "cost": "$60",
+                        "duration": "2 days"
+                    }, {
+                        "id": "2",
+                        "name": "Print Large",
+                        "note": "Lorem ipsum dolor sit amet",
+                        "cost": "$60",
+                        "duration": "2 days"
+                    }
+                ]
+        }
+        
+### Create Printshop [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Shop 1",
+            "note": "Lorem ipsum dolor sit amet",
+            "address": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /printshops/1
+ 
+### Update Printshop [PUT /printshops/{id}]
+
++ Parameters
+    + id (string) - ID of Printshop
+    
++ Request (application/json)
+
+        {
+            "name": "Shop 1",
+            "note": "Lorem ipsum dolor sit amet",
+            "address": "Lorem ipsum dolor sit amet",
+            "thumbnail": "https://randomuser.me/api/portraits/women/1.jpg"
+        }
+
++ Response 204 (application/json)
+
+### Delete Printshop [DELETE  /printshops/{id}]
+
++ Parameters
+    + id (string) - ID of Printshop
+    
++ Response 204 (application/json)
+
+### Rate Printshop [PATCH  /printshops/{id}/rate]
+
++ Parameters
+    + id (string) - ID of Customer
+    
++ Request (application/json)
+
+        {
+            "comment": "Lorem ipsum dolor sit amet",
+            "rating": "4.5"
+        }
+        
++ Response 204 (application/json)
+
+
+## Services Collection [/services]
+
+### List All Services [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "name": "Print Large",
+                "note": "Lorem ipsum dolor sit amet",
+                "cost": "$60",
+                "duration": "2 days"
+            }
+        ]
+
+### Get Service [GET  /services/{id}]
+
++ Parameters
+    + id (string) - ID of Service
+    
++ Response 200 (application/json)
+
+        {
+            "id": "1",
+            "name": "Print Large",
+            "note": "Lorem ipsum dolor sit amet",
+            "cost": "$60",
+            "duration": "2 days"
+        }
+        
+### Create Service [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Print Large",
+            "note": "Lorem ipsum dolor sit amet",
+            "cost": "$60",
+            "duration": "2 days"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /services/1
+
+    + Body
+
+            {
+                "id": "1",
+                "name": "Print Large",
+                "note": "Lorem ipsum dolor sit amet",
+                "cost": "$60",
+                "duration": "2 days"
+            }
+    
+### Update Service [PUT /services/{id}]
+
++ Parameters
+    + id (string) - ID of Service
+    
++ Request (application/json)
+
+        {
+            "name": "Print Large",
+            "note": "Lorem ipsum dolor sit amet",
+            "cost": "$60",
+            "duration": "2 days"
+        }
+
++ Response 204 (application/json)
+
+### Delete Service [DELETE  /services/{id}]
+
++ Parameters
+    + id (string) - ID of Service
+    
++ Response 204 (application/json)
