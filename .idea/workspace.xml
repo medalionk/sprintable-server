@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4871846-e286-42a7-90f9-bdfc853b201d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/customer-module.js" afterPath="$PROJECT_DIR$/modules/customer-module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/job-module.js" afterPath="$PROJECT_DIR$/modules/job-module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/printshop-module.js" afterPath="$PROJECT_DIR$/modules/printshop-module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/customers.js" afterPath="$PROJECT_DIR$/routes/customers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/jobs.js" afterPath="$PROJECT_DIR$/routes/jobs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/service-module.js" afterPath="$PROJECT_DIR$/modules/service-module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/services.js" afterPath="$PROJECT_DIR$/routes/services.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,8 +30,8 @@
       <file leaf-file-name="printshop-module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/printshop-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="50" />
+            <state relative-caret-position="490">
+              <caret line="113" column="25" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="113" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -43,18 +40,48 @@
       <file leaf-file-name="printshops.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/printshops.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="23" column="28" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="425">
+              <caret line="38" column="7" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="38" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobs.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jobs.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/jobs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="225">
+              <caret line="9" column="7" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service-module.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/service-module.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wip-module.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/wip-module.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -63,8 +90,8 @@
       <file leaf-file-name="job-module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/job-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="550">
+              <caret line="145" column="24" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="145" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -80,7 +107,6 @@
       <list>
         <option value="$PROJECT_DIR$/models/models.js" />
         <option value="$PROJECT_DIR$/models/service.js" />
-        <option value="$PROJECT_DIR$/routes/services.js" />
         <option value="$PROJECT_DIR$/models/job.js" />
         <option value="$PROJECT_DIR$/routes/wips.js" />
         <option value="$PROJECT_DIR$/modules/wip-module.js" />
@@ -94,6 +120,8 @@
         <option value="$PROJECT_DIR$/modules/customer-module.js" />
         <option value="$PROJECT_DIR$/routes/jobs.js" />
         <option value="$PROJECT_DIR$/modules/job-module.js" />
+        <option value="$PROJECT_DIR$/modules/service-module.js" />
+        <option value="$PROJECT_DIR$/routes/services.js" />
       </list>
     </option>
   </component>
@@ -218,12 +246,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501613723448</updated>
-      <workItem from="1501613724813" duration="44199000" />
+      <workItem from="1501613724813" duration="45405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44199000" />
+    <option name="totallyTimeSpent" value="45405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -309,14 +337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="69" column="3" lean-forward="false" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -333,26 +353,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/wip-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/printshop.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/service-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -405,34 +409,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/printshops.js">
+    <entry file="file://$PROJECT_DIR$/modules/wip-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/printshop-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="50" />
+        <state relative-caret-position="150">
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/job-module.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="145" column="24" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="145" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/printshop-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="113" column="25" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="113" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/service-module.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/jobs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        <state relative-caret-position="225">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/printshops.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="38" column="7" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="38" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
           <folding />
         </state>
       </provider>

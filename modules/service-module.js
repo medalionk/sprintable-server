@@ -1,18 +1,13 @@
-var express = require('express');
-var router = express.Router();
-
 var service = require("../models/service");
 
-/* GET All Services. */
-router.get('/', function(req, res, next) {
-    req.db.services.find().toArray(function(error, result){
+var fetchAll = function(req, next, callback, filterBy) {
+    req.db.services.find(filterBy || {}).toArray(function(error, result){
         if (error) return next(error);
-        res.send(result || []);
+        callback(result);
     });
-});
+};
 
-/* GET Service. */
-router.get('/:id', function(req, res, next) {
+var fetch = function(req, next, callback) {
     console.log('Get Service id: ', req.params.id);
 
     if (!req.params || !req.params.id)
@@ -21,25 +16,26 @@ router.get('/:id', function(req, res, next) {
     req.db.services.findById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Service is not found.'));
-        res.send(result);
-    });
-});
 
-/* POST Create Service. */
-router.post('/', function(req, res, next) {
+        callback(result);
+    });
+};
+
+var insert = function(req, next, callback) {
     console.log(req.body);
 
     var values = service.create(req, next);
     req.db.services.insert(values, function(error, result){
         if (error) return next(error);
         if (!result) return next(new Error('Failed to insert.'));
-        console.info('Added Service: ', result);
-        res.send(200);
-    });
-});
 
-/* PUT Update Service. */
-router.put('/:id', function(req, res, next) {
+        var id = result.insertedIds[0].toString();
+        console.info('Added Service id: ', id);
+        callback(id);
+    });
+};
+
+var update = function(req, next, callback) {
     console.log('Update Service id: ', req.params.id);
 
     if (!req.params || !req.params.id)
@@ -49,13 +45,13 @@ router.put('/:id', function(req, res, next) {
     req.db.services.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to update.'));
-        console.log('Service updated: ', result);
-        res.send(200);
-    });
-});
 
-/* DELETE Service. */
-router.delete('/:id', function(req, res, next) {
+        console.log('Service updated: ', result);
+        callback();
+    });
+};
+
+var remove = function(req, next, callback) {
     console.log('Delete Service id: ', req.params.id);
 
     if (!req.params || !req.params.id)
@@ -64,9 +60,14 @@ router.delete('/:id', function(req, res, next) {
     req.db.services.removeById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to delete.'));
-        console.log('Service deleted: ', result);
-        res.send(200);
-    });
-});
 
-module.exports = router;
+        console.log('Service deleted: ', result);
+        callback();
+    });
+};
+
+exports.fetchAll = fetchAll;
+exports.fetch = fetch;
+exports.insert = insert;
+exports.update = update;
+exports.remove = remove ;
