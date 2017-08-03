@@ -1,61 +1,48 @@
 var express = require('express');
 var router = express.Router();
 
-var job = require("../modules/job-module");
+var printshop = require("../modules/printshop-module");
 
-/* GET All Jobs. */
+/* GET All Printshops. */
 router.get('/', function(req, res, next) {
-    job.fetchAll(req, next, function (jobs) {
-        res.send(jobs || []);
+    printshop.fetchAll(req, next, function (printshops) {
+        res.send(printshops || []);
     });
 });
 
-/* GET Job. */
+/* GET Printshop. */
 router.get('/:id', function(req, res, next) {
-    job.fetch(req, next, function (job) {
-        res.send(job || {});
+    printshop.fetch(req, next, function (printshop) {
+        res.send(printshop || {});
     });
 });
 
-/* POST Create Job. */
+/* POST Create Printshop. */
 router.post('/', function(req, res, next) {
-    job.insert(req, next, function (job) {
-        res.sendStatus(200);
+    printshop.insert(req, next, function (id) {
+        res.location('/printshops/' + id);
+        res.sendStatus(201);
     });
 });
 
-/* PUT Update Job. */
+/* PUT Update Printshop. */
 router.put('/:id', function(req, res, next) {
-    job.update(req, next, function (job) {
-        res.sendStatus(200);
+    printshop.update(req, next, function () {
+        res.sendStatus(204);
     });
 });
 
-/* DELETE Job. */
+/* DELETE Printshop. */
 router.delete('/:id', function(req, res, next) {
-    job.remove(req, next, function (job) {
-        res.sendStatus(200);
+    printshop.remove(req, next, function () {
+        res.sendStatus(204);
     });
 });
 
-/* Accept Job. */
-router.patch('/:id/accept', function(req, res, next) {
-    job.accept(req, next, function (job) {
-        res.sendStatus(200);
-    });
-});
-
-/* Reject Job. */
-router.patch('/:id/reject', function(req, res, next) {
-    job.reject(req, next, function (job) {
-        res.sendStatus(200);
-    });
-});
-
-/* Close Job. */
-router.patch('/:id/close', function(req, res, next) {
-    job.close(req, next, function (job) {
-        res.sendStatus(200);
+/* Rate Printshop. */
+router.patch('/:id/rate', function(req, res, next) {
+    printshop.rate(req, next, function () {
+        res.sendStatus(204);
     });
 });
 

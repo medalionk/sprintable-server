@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
 
 /* POST Create Customer. */
 router.post('/', function(req, res, next) {
-    customer.insert(req, next, function (job) {
+    customer.insert(req, next, function (customer) {
         res.sendStatus(200);
     });
 });
@@ -40,7 +40,7 @@ router.delete('/:id', function(req, res, next) {
 
 /* Rate Customer. */
 router.patch('/:id/rate', function(req, res, next) {
-    customer.rate(req, next, function (job) {
+    customer.rate(req, next, function (customer) {
         res.sendStatus(200);
     });
 });

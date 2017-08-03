@@ -90,10 +90,11 @@ var remove = function(req, next, callback) {
 var accept = function(req, next, callback) {
     console.log('Accept Job id: ', req.params.id);
 
-    if (!req.params || !req.params.id)
-        return next(new Error('Invalid id params provided.'));
+    if (!req.params || !req.params.id || !req.body.printshop_id)
+        return next(new Error('Invalid params provided.'));
 
-    req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.PROCESSING}}, function(error, result) {
+    req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.PROCESSING,
+        printshop_id:req.body.printshop_id}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to accept job.'));
         console.log('Job accepted: ', result);
