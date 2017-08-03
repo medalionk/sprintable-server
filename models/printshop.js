@@ -1,10 +1,11 @@
-var Printshop = function(name, note, address, thumbnail, rating, reg_date) {
+var Printshop = function(name, note, address, thumbnail, rating, reg_date, jobs) {
     this.name = name;
     this.note = note;
     this.address = address;
     this.thumbnail = thumbnail;
     this.rating = rating;
     this.reg_date = reg_date;
+    this.jobs = jobs;
 };
 
 exports.create = function(req, next) {
@@ -13,7 +14,7 @@ exports.create = function(req, next) {
         return next(new Error('Invalid data provided.'));
 
     var printshop = new Printshop(body.name, body.note || '', body.address,
-        body.thumbnail, 0.0, new Date());
+        body.thumbnail, 0.0, new Date(), []);
     return printshop;
 };
 

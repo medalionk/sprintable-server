@@ -32,6 +32,8 @@ app.use(function(req, res, next) {
     req.db = {};
     req.db.services = db.collection('services');
     req.db.jobs = db.collection('jobs');
+    req.db.customers = db.collection('customers');
+    req.db.printshops = db.collection('printshops');
     req.createHexID = ObjectID.createFromHexString;
     next();
 })

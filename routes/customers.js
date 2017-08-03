@@ -1,60 +1,46 @@
 var express = require('express');
 var router = express.Router();
 
-var job = require("../modules/job-module");
+var customer = require("../modules/customer-module");
 
-/* GET All Jobs. */
+/* GET All Customers. */
 router.get('/', function(req, res, next) {
-    job.fetchAll(req, next, function (jobs) {
-        res.send(jobs || []);
+    customer.fetchAll(req, next, function (customers) {
+        res.send(customers || []);
     });
 });
 
-/* GET Job. */
+/* GET Customer. */
 router.get('/:id', function(req, res, next) {
-    job.fetch(req, next, function (job) {
-        res.send(job || {});
+    customer.fetch(req, next, function (customer) {
+        res.send(customer || {});
     });
 });
 
-/* POST Create Job. */
+/* POST Create Customer. */
 router.post('/', function(req, res, next) {
-    job.insert(req, next, function (job) {
+    customer.insert(req, next, function (job) {
         res.sendStatus(200);
     });
 });
 
-/* PUT Update Job. */
+/* PUT Update Customer. */
 router.put('/:id', function(req, res, next) {
-    job.update(req, next, function (job) {
+    customer.update(req, next, function (customer) {
         res.sendStatus(200);
     });
 });
 
-/* DELETE Job. */
+/* DELETE Customer. */
 router.delete('/:id', function(req, res, next) {
-    job.remove(req, next, function (job) {
+    customer.remove(req, next, function (customer) {
         res.sendStatus(200);
     });
 });
 
-/* Accept Job. */
-router.patch('/:id/accept', function(req, res, next) {
-    job.accept(req, next, function (job) {
-        res.sendStatus(200);
-    });
-});
-
-/* Reject Job. */
-router.patch('/:id/reject', function(req, res, next) {
-    job.reject(req, next, function (job) {
-        res.sendStatus(200);
-    });
-});
-
-/* Close Job. */
-router.patch('/:id/close', function(req, res, next) {
-    job.close(req, next, function (job) {
+/* Rate Customer. */
+router.patch('/:id/rate', function(req, res, next) {
+    customer.rate(req, next, function (job) {
         res.sendStatus(200);
     });
 });

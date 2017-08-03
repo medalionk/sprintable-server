@@ -1,11 +1,10 @@
 var job = require("../models/job");
 
-var fetchCustomer = function(req, next, job, postFetch) {
-    req.db.services.findById(job.customer_id, function(error, customer) {
+var fetchCustomer = function(req, next, job, callback) {
+    req.db.customers.findById(job.customer_id, function(error, customer) {
         if (error) return next(error);
-        if (!customer) return next (new Error('Customer not found.'));
-        job.customer = customer;
-        postFetch(job);
+        job.customer = customer || {};
+        callback(job);
     });
 };
 
