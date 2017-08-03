@@ -10,6 +10,7 @@ var mongoskin = require('mongoskin');
 var db = mongoskin.db('mongodb://localhost:27017/sprintabledb');
 
 var services = require('./routes/services');
+var jobs = require('./routes/jobs');
 
 var app = express();
 
@@ -28,11 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
     req.db = {};
     req.db.services = db.collection('services');
+    req.db.jobs = db.collection('jobs');
     req.createHexID = ObjectID.createFromHexString;
     next();
 })
 
 app.use('/api/services', services);
+app.use('/api/jobs', jobs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
