@@ -17,24 +17,45 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-/* POST Create Service. */
+/* POST Create Job. */
 router.post('/', function(req, res, next) {
-    job.insert(req, next, function () {
-        res.send(200);
+    job.insert(req, next, function (job) {
+        res.sendStatus(200);
     });
 });
 
-/* PUT Update Service. */
+/* PUT Update Job. */
 router.put('/:id', function(req, res, next) {
     job.update(req, next, function (job) {
-        res.send(200);
+        res.sendStatus(200);
     });
 });
 
-/* DELETE Service. */
+/* DELETE Job. */
 router.delete('/:id', function(req, res, next) {
     job.remove(req, next, function (job) {
-        res.send(200);
+        res.sendStatus(200);
+    });
+});
+
+/* Accept Job. */
+router.patch('/:id/accept', function(req, res, next) {
+    job.accept(req, next, function (job) {
+        res.sendStatus(200);
+    });
+});
+
+/* Reject Job. */
+router.patch('/:id/reject', function(req, res, next) {
+    job.reject(req, next, function (job) {
+        res.sendStatus(200);
+    });
+});
+
+/* Close Job. */
+router.patch('/:id/close', function(req, res, next) {
+    job.close(req, next, function (job) {
+        res.sendStatus(200);
     });
 });
 

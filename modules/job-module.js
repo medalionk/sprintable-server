@@ -9,10 +9,10 @@ var fetchCustomer = function(req, next, job, postFetch) {
     });
 };
 
-var fetchAll = function(req, next, callback) {
+var fetchAll = function(req, next, callback, filterBy) {
     var jobs = [];
 
-    req.db.jobs.find({}, function(error, result) {
+    req.db.jobs.find(filterBy || {}, function(error, result) {
         if (error) return next(error);
 
         function processJobs(err, job) {
@@ -88,8 +88,53 @@ var remove = function(req, next, callback) {
     });
 };
 
+var accept = function(req, next, callback) {
+    console.log('Accept Job id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid id params provided.'));
+
+    req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.PROCESSING}}, function(error, result) {
+        if (error) return next(error);
+        if (!result) return next(new Error('Failed to accept job.'));
+        console.log('Job accepted: ', result);
+        callback();
+    });
+};
+
+var reject = function(req, next, callback) {
+    console.log('Reject Job id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid id params provided.'));
+
+    req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.REJECTED}}, function(error, result) {
+        if (error) return next(error);
+        if (!result) return next(new Error('Failed to reject job.'));
+        console.log('Job rejected: ', result);
+        callback();
+    });
+};
+
+var close = function(req, next, callback) {
+    console.log('Close Job id: ', req.params.id);
+
+    if (!req.params || !req.params.id)
+        return next(new Error('Invalid id params provided.'));
+
+    req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.CLOSED}}, function(error, result) {
+        if (error) return next(error);
+        if (!result) return next(new Error('Failed to close job.'));
+        console.log('Job closed: ', result);
+        callback();
+    });
+};
+
 exports.fetchAll = fetchAll;
 exports.fetch = fetch;
 exports.insert = insert;
 exports.update = update;
-exports.remove = remove;
+exports.remove = remove ;
+exports.accept = accept;
+exports.reject = reject;
+exports.close = close;
