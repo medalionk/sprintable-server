@@ -1,13 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
-var jobs = require("../models/job");
+var job = require("../models/job");
 
 /* GET All Jobs. */
 router.get('/', function(req, res, next) {
-    req.db.jobs.find().toArray(function(error, result){
+    var jobs = [];
+
+    req.db.jobs.find({}, function(error, result) {
         if (error) return next(error);
-        res.send(result || []);
+
+        function processJobs(err, job) {
+            if(job === null) {
+                res.send(jobs);
+                return;
+            }
+
+            req.db.services.findById(job.customer_id, function(error, customer) {
+                if (error) return next(error);
+                if (!customer) return next (new Error('Customer not found.'));
+                job.customer = customer;
+                jobs.push(job);
+                result.nextObject(processJobs);
+            });
+        }
+
+        result.nextObject(processJobs);
     });
 });
 
@@ -29,7 +47,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
     console.log(req.body);
 
-    var values = jobs.create(req, next);
+    var values = job.create(req, next);
     req.db.jobs.insert(values, function(error, result){
         if (error) return next(error);
         if (!result) return next(new Error('Failed to insert.'));
@@ -45,7 +63,7 @@ router.put('/:id', function(req, res, next) {
     if (!req.params || !req.params.id)
         return next(new Error('Invalid params provided.'));
 
-    var values = jobs.create(req, next);
+    var values = job.create(req, next);
     req.db.jobs.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to update.'));
