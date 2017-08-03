@@ -70,6 +70,7 @@ var update = function(req, next, callback) {
     req.db.printshops.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to update.'));
+
         console.log('Printshop updated: ', result);
         callback();
     });
@@ -84,6 +85,7 @@ var remove = function(req, next, callback) {
     req.db.printshops.removeById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to delete.'));
+
         console.log('Printshop deleted: ', result);
         callback();
     });
@@ -98,6 +100,7 @@ var rate = function(req, next, callback) {
     req.db.printshops.updateById(req.params.id, {$set:{rating:req.body.rating}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to rate printshop.'));
+
         console.log('Printshop rated: ', result);
         callback();
     });

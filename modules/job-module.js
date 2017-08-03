@@ -53,8 +53,10 @@ var insert = function(req, next, callback) {
     req.db.jobs.insert(values, function(error, result){
         if (error) return next(error);
         if (!result) return next(new Error('Failed to insert.'));
-        console.info('Added Job: ', result);
-        callback();
+
+        var id = result.insertedIds[0].toString();
+        console.info('Added Job id: ', id);
+        callback(id);
     });
 };
 
@@ -68,6 +70,7 @@ var update = function(req, next, callback) {
     req.db.jobs.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to update.'));
+
         console.log('Job updated: ', result);
         callback();
     });
@@ -82,6 +85,7 @@ var remove = function(req, next, callback) {
     req.db.jobs.removeById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to delete.'));
+
         console.log('Job deleted: ', result);
         callback();
     });
@@ -97,6 +101,7 @@ var accept = function(req, next, callback) {
         printshop_id:req.body.printshop_id}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to accept job.'));
+
         console.log('Job accepted: ', result);
         callback();
     });
@@ -111,6 +116,7 @@ var reject = function(req, next, callback) {
     req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.REJECTED}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to reject job.'));
+
         console.log('Job rejected: ', result);
         callback();
     });
@@ -125,6 +131,7 @@ var close = function(req, next, callback) {
     req.db.jobs.updateById(req.params.id, {$set:{status:job.Status.CLOSED}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to close job.'));
+
         console.log('Job closed: ', result);
         callback();
     });

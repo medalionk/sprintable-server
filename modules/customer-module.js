@@ -53,8 +53,10 @@ var insert = function(req, next, callback) {
     req.db.customers.insert(values, function(error, result){
         if (error) return next(error);
         if (!result) return next(new Error('Failed to insert.'));
-        console.info('Added Customer: ', result);
-        callback();
+
+        var id = result.insertedIds[0].toString();
+        console.info('Added Customer id: ', id);
+        callback(id);
     });
 };
 
@@ -68,6 +70,7 @@ var update = function(req, next, callback) {
     req.db.customers.updateById(req.params.id, {$set:values}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to update.'));
+
         console.log('Customer updated: ', result);
         callback();
     });
@@ -82,6 +85,7 @@ var remove = function(req, next, callback) {
     req.db.customers.removeById(req.params.id, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to delete.'));
+
         console.log('Customer deleted: ', result);
         callback();
     });
@@ -96,6 +100,7 @@ var rate = function(req, next, callback) {
     req.db.customers.updateById(req.params.id, {$set:{rating:req.body.rating}}, function(error, result) {
         if (error) return next(error);
         if (!result) return next(new Error('Failed to rate customer.'));
+
         console.log('Customer rated: ', result);
         callback();
     });
