@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('./config');
 var ObjectID = require('mongodb').ObjectID
 var mongoskin = require('mongoskin');
-var db = mongoskin.db('mongodb://localhost:27017/sprintabledb');
 
 var services = require('./routes/services');
 var jobs = require('./routes/jobs');
@@ -15,6 +15,7 @@ var wips = require('./routes/wips');
 var customers = require('./routes/customers');
 var printshops = require('./routes/printshops');
 
+var db = mongoskin.db(config.db.remoteUrl);
 var app = express();
 
 // view engine setup
